@@ -1,0 +1,22 @@
+
+<% if current_user != nil %>
+	<h1><%= current_user.username %>'s Feed</h1>
+<% end %>
+
+<% @following_tweets.each do |tweet| %>
+	<div class = "well">
+		<p><% if current_user.avatar.blank? == false %>
+                  <%= image_tag current_user.avatar.url, size:25, class: "user-pic-nav" %>
+        	<% end %>
+        	<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %>
+        </p>
+	<div class = "container">
+		<p><%= tweet.message.html_safe %></p>
+	</div>
+		<p>
+			<%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %>
+			<%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at >= 86400 %>
+
+		</p>
+	</div>
+<% end %>

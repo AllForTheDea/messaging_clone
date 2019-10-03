@@ -18,3 +18,17 @@ require("channels")
 
 
 require('bootstrap-sass')
+
+
+$ (document).on('turbolinks:load', function(){
+	$('.unfollow_btn').hover(function(){
+		$(this).html('Unfollow');
+		$(this).removeClass('btn-primary');
+		$(this).addClass('btn-danger');
+	}, function(){
+		$(this).html('Following');
+		$(this).removeClass('btn-danger');
+		$(this).addClass('btn-primary');
+
+	});
+});

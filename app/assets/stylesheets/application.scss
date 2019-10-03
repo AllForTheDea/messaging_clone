@@ -17,3 +17,21 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
  @import 'font-awesome';
+
+
+ .jumbotron{
+	background-color: #1b95e0;
+	height: 300px;
+}
+
+.form-group{
+	border-radius-top-left: 30px;
+}
+.well{
+	background-color: white;
+}
+.birdie{
+	border-radius: 100%;
+	 object-fit:cover;
+	 height:100%;
+}

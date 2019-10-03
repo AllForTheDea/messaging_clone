@@ -2,9 +2,10 @@
 
 <h1>Tweets</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
+      <th> -------</th>
       <th>Message</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -14,8 +15,12 @@
   <tbody>
     <% @tweets.each do |tweet| %>
       <tr>
+        <td><% if tweet.user.avatar.blank? == false %>
+          <%= image_tag tweet.user.avatar.url, size:30 %>
+          <% end %>
+        </td>
         <td><%= tweet.message %></td>
-        <td><%= tweet.user_id %></td>
+        <td><%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %></td>
         <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
         <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
